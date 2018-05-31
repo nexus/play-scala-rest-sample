@@ -1,1 +1,8 @@
-GET     /                           controllers.HomeController.index
+GET    /                                       controllers.HomeController.index
+
+# car adverts
+GET    /adverts/cars                           controllers.CarAdvertsController.list
+GET    /adverts/cars/:id                       controllers.CarAdvertsController.get(id: Long)
+POST   /adverts/cars                           controllers.CarAdvertsController.create
+PUT    /adverts/cars/:id                       controllers.CarAdvertsController.update(id: Long)
+DELETE /adverts/cars/:id                       controllers.CarAdvertsController.delete(id: Long)
