@@ -1,7 +1,9 @@
 package controllers
 
-import javax.inject._
+import java.time.LocalDate
 
+import javax.inject._
+import models.{CarAdvert, CarAdvertNew, CarAdvertOld, Fuel}
 import play.api.libs.json.Json
 import play.api.mvc._
 
@@ -9,7 +11,16 @@ import play.api.mvc._
 class CarAdvertsController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def list = Action {
-    NotImplemented(Json.obj("error" -> "Not Implemented"))
+    val newAd = CarAdvertNew(Some(1), "A4 avavnt", Fuel.Gasoline, 10000)
+
+    val oldCarReg = LocalDate.parse("2017-01-01")
+    val oldAd = CarAdvertOld(Some(2), "A6 avavnt", Fuel.Gasoline, 10000, 5320, oldCarReg)
+
+    val ads = List[CarAdvert](newAd, oldAd)
+
+    Ok(
+      Json.toJson(ads)
+    )
   }
 
   def get(id: Long) = Action {
