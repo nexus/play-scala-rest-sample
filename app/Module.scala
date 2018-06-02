@@ -1,5 +1,6 @@
 import com.google.inject.AbstractModule
 import services.{CarAdvertsService, CarAdvertsServiceImpl}
+import storages.{CarAdvertsStorage, CarAdvertsStorageBaseImpl}
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -15,6 +16,8 @@ class Module extends AbstractModule {
 
   override def configure() = {
     bind(classOf[CarAdvertsService]).to(classOf[CarAdvertsServiceImpl])
+    bind(classOf[CarAdvertsStorage]).to(classOf[CarAdvertsStorageBaseImpl])
+
   }
 
 }
