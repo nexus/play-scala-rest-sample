@@ -1,9 +1,9 @@
-GET    /                                       controllers.HomeController.index
+GET    /                                       controllers.api.v1.adverts.CarsListController.list
 
 # car adverts
-GET    /adverts/cars                           controllers.api.v1.CarAdvertsController.list
+GET    /adverts/cars                           controllers.api.v1.adverts.CarsListController.list
 
-GET    /adverts/cars/:id                       controllers.api.v1.CarAdvertsController.get(id: Long)
-POST   /adverts/cars                           controllers.api.v1.CarAdvertsController.create
-PUT    /adverts/cars/:id                       controllers.api.v1.CarAdvertsController.update(id: Long)
-DELETE /adverts/cars/:id                       controllers.api.v1.CarAdvertsController.delete(id: Long)
+GET    /adverts/cars/:id                       controllers.api.v1.adverts.CarsGetController.get(id: Int)
+POST   /adverts/cars                           controllers.api.v1.adverts.CarsNewController.create
+PUT    /adverts/cars/:id                       controllers.api.v1.adverts.CarsUpdateController.update(id: Int)
+DELETE /adverts/cars/:id                       controllers.api.v1.adverts.CarsDeleteController.delete(id: Int)
