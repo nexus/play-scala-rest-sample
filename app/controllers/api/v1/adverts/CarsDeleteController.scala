@@ -10,9 +10,9 @@ import services.CarAdvertsService
 class CarsDeleteController @Inject()(cc: ControllerComponents, service: CarAdvertsService) extends ApiBaseController(cc) {
 
   def delete(id: Int) = safeAction { implicit request =>
-    val deleted = service.delete(id)
+    val isDeleted = service.delete(id)
 
-    if (deleted > 0)
+    if (isDeleted)
       Ok(Json.obj("id" -> id))
     else
       NotFound

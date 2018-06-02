@@ -25,8 +25,8 @@ class CarsUpdateController @Inject()(cc: ControllerComponents, service: CarAdver
   )
 
   def update(id: Int) = safeActionWithValidation(validationForm, (data: UpdateData) => {
-    val updated = service.update(id, data)
-    if (updated > 0)
+    val isUpdated = service.update(id, data)
+    if (isUpdated)
       Ok(Json.obj("id" -> id))
     else
       NotFound

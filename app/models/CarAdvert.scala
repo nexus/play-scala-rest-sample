@@ -2,21 +2,22 @@ package models
 
 import java.time.LocalDate
 
+import models.Fuel.Fuel
 import play.api.libs.json._
 
 abstract class CarAdvert {
   val id: Option[Int]
   val title: String
-  val fuel: Fuel.Value
+  val fuel: Fuel
   val price: Int
   val isNew: Boolean
 }
 
-case class CarAdvertNew(id: Option[Int], title: String, fuel: Fuel.Value, price: Int) extends CarAdvert {
+case class CarAdvertNew(id: Option[Int], title: String, fuel: Fuel, price: Int) extends CarAdvert {
   val isNew = true
 }
 
-case class CarAdvertOld(id: Option[Int], title: String, fuel: Fuel.Value, price: Int, mileage: Int, firstReg: LocalDate) extends CarAdvert {
+case class CarAdvertOld(id: Option[Int], title: String, fuel: Fuel, price: Int, mileage: Int, firstReg: LocalDate) extends CarAdvert {
   val isNew = false
 }
 

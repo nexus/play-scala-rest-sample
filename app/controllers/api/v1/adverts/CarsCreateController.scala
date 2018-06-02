@@ -14,6 +14,7 @@ case class CreateData(title: String, fuel: String, price: Int, isNew: Boolean, m
 @Singleton
 class CarsCreateController @Inject()(cc: ControllerComponents, service: CarAdvertsService) extends ApiBaseController(cc) {
 
+  // TODO validate `mileage` & `firstReg` if isNew = false
   val validationForm = Form(
     mapping(
       "title" -> nonEmptyText(maxLength = 128),
@@ -26,8 +27,11 @@ class CarsCreateController @Inject()(cc: ControllerComponents, service: CarAdver
   )
 
   def create = safeActionWithValidation(validationForm, (data: CreateData) => {
-    val created = service.create(data)
+    val createdId = service.create(data)
 
-    Created(Json.toJson(created))
+    if (createdId > 0)
+      Created(Json.obj("id" -> createdId))
+    else
+      InternalServerError
   })
 }
