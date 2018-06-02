@@ -1,16 +1,17 @@
-package controllers
+package controllers.api.v1
 
 import java.time.LocalDate
 
+import controllers.ApiBaseController
 import javax.inject._
 import models.{CarAdvert, CarAdvertNew, CarAdvertOld, Fuel}
 import play.api.libs.json.Json
 import play.api.mvc._
 
 @Singleton
-class CarAdvertsController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class CarAdvertsController @Inject()(cc: ControllerComponents) extends ApiBaseController(cc) {
 
-  def list = Action {
+  def list = safeAction { implicit request =>
     val newAd = CarAdvertNew(Some(1), "A4 avavnt", Fuel.Gasoline, 10000)
 
     val oldCarReg = LocalDate.parse("2017-01-01")
