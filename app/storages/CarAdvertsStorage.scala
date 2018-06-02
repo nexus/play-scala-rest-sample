@@ -2,7 +2,7 @@ package storages
 
 import java.time.LocalDate
 
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 import models.{CarAdvert, CarAdvertNew, CarAdvertOld, Fuel}
 import play.api.Configuration
 
@@ -14,6 +14,7 @@ trait CarAdvertsStorage {
   def delete(id: Int): Int
 }
 
+@Singleton
 class CarAdvertsStorageBaseImpl @Inject() (config: Configuration) extends CarAdvertsStorage {
   override def list(sortBy: String) = {
     val newAd = CarAdvertNew(Some(1), "AUDI A4 avant", Fuel.Gasoline, 10000)

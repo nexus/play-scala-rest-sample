@@ -3,7 +3,7 @@ package services
 import java.time.LocalDate
 
 import controllers.api.v1.adverts.{CreateData, UpdateData}
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 import models.{CarAdvert, CarAdvertNew, CarAdvertOld, Fuel}
 import storages.CarAdvertsStorage
 
@@ -15,6 +15,7 @@ trait CarAdvertsService {
   def delete(id: Int): Int
 }
 
+@Singleton
 class CarAdvertsServiceImpl @Inject() (storage: CarAdvertsStorage) extends CarAdvertsService {
 
   override def list(sortBy: String): Seq[CarAdvert] = {
