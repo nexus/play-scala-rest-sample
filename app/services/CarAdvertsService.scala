@@ -29,16 +29,16 @@ class CarAdvertsServiceImpl @Inject() (storage: CarAdvertsStorage) extends CarAd
   override def create(data: CreateData): CarAdvert = {
     // TODO creation logic
     val ad = if (data.isNew)
-      CarAdvertNew(None, "AUDI A4 avant", Fuel.Gasoline, 10000)
+      CarAdvertNew(None, "AUDI A4 avant", Fuel.gasoline, 10000)
     else
-      CarAdvertOld(None, "AUDI A6 avant", Fuel.Gasoline, 10000, 5320, LocalDate.parse("2017-01-01"))
+      CarAdvertOld(None, "AUDI A6 avant", Fuel.gasoline, 10000, 5320, LocalDate.parse("2017-01-01"))
 
     storage.create(ad)
   }
 
   override def update(id: Int, data: UpdateData): Int = {
     // TODO creation logic
-    val ad = CarAdvertNew(None, "AUDI A4 avant", Fuel.Gasoline, 10000)
+    val ad = CarAdvertNew(None, "AUDI A4 avant", Fuel.gasoline, 10000)
     storage.update(ad)
   }
 

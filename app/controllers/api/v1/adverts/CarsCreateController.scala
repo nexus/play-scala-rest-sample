@@ -7,24 +7,21 @@ import play.api.data.Forms._
 import play.api.libs.json.Json
 import play.api.mvc._
 import services.CarAdvertsService
+import utils.Validators
 
 case class CreateData(title: String, fuel: String, price: Int, isNew: Boolean, mileage: Option[Int], firstReg: Option[String])
-
-object CreateData {
-  implicit val writer = Json.writes[CreateData]
-}
 
 @Singleton
 class CarsCreateController @Inject()(cc: ControllerComponents, service: CarAdvertsService) extends ApiBaseController(cc) {
 
   val validationForm = Form(
     mapping(
-      "title" -> nonEmptyText,
-      "fuel" -> nonEmptyText,
-      "price" -> number,
+      "title" -> nonEmptyText(maxLength = 128),
+      "fuel" -> Validators.fuel,
+      "price" -> number(min = 0),
       "isNew" -> boolean,
-      "mileage" -> optional(number),
-      "firstReg" -> optional(nonEmptyText)
+      "mileage" -> optional(number(min = 0)),
+      "firstReg" -> optional(Validators.regDate)
     )(CreateData.apply)(CreateData.unapply)
   )
 

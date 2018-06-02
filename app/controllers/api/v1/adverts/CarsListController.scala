@@ -7,6 +7,7 @@ import play.api.data.Forms._
 import play.api.libs.json.Json
 import play.api.mvc._
 import services.CarAdvertsService
+import utils.Validators
 
 case class ListData(sortBy: Option[String])
 
@@ -15,7 +16,7 @@ class CarsListController @Inject()(cc: ControllerComponents, service: CarAdverts
 
   val validationForm = Form(
     mapping(
-      "sortBy" -> optional(nonEmptyText)
+      "sortBy" -> optional(Validators.sortBy)
     )(ListData.apply)(ListData.unapply)
   )
 

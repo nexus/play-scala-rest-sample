@@ -17,10 +17,10 @@ trait CarAdvertsStorage {
 @Singleton
 class CarAdvertsStorageBaseImpl @Inject() (config: Configuration) extends CarAdvertsStorage {
   override def list(sortBy: String) = {
-    val newAd = CarAdvertNew(Some(1), "AUDI A4 avant", Fuel.Gasoline, 10000)
+    val newAd = CarAdvertNew(Some(1), "AUDI A4 avant", Fuel.gasoline, 10000)
 
     val oldCarReg = LocalDate.parse("2017-01-01")
-    val oldAd = CarAdvertOld(Some(2), "AUDI A6 avant", Fuel.Gasoline, 10000, 5320, oldCarReg)
+    val oldAd = CarAdvertOld(Some(2), "AUDI A6 avant", Fuel.gasoline, 10000, 5320, oldCarReg)
 
     val ads = List[CarAdvert](newAd, oldAd)
 
