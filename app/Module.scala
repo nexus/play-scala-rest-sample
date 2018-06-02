@@ -1,4 +1,5 @@
 import com.google.inject.AbstractModule
+import services.{CarAdvertsService, CarAdvertsServiceImpl}
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -13,7 +14,7 @@ import com.google.inject.AbstractModule
 class Module extends AbstractModule {
 
   override def configure() = {
-//    bind(classOf[Counter]).to(classOf[AtomicCounter])
+    bind(classOf[CarAdvertsService]).to(classOf[CarAdvertsServiceImpl])
   }
 
 }

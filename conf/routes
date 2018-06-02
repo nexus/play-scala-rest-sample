@@ -4,6 +4,6 @@ GET    /                                       controllers.api.v1.adverts.CarsLi
 GET    /adverts/cars                           controllers.api.v1.adverts.CarsListController.list
 
 GET    /adverts/cars/:id                       controllers.api.v1.adverts.CarsGetController.get(id: Int)
-POST   /adverts/cars                           controllers.api.v1.adverts.CarsNewController.create
+POST   /adverts/cars                           controllers.api.v1.adverts.CarsCreateController.create
 PUT    /adverts/cars/:id                       controllers.api.v1.adverts.CarsUpdateController.update(id: Int)
 DELETE /adverts/cars/:id                       controllers.api.v1.adverts.CarsDeleteController.delete(id: Int)
